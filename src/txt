@@ -1,0 +1,23 @@
+
+WARMUP:
+1. Create a Vue project called global_communication, connect to GitHub
+2. Configure your debugger
+3. Delete all usage of HelloWorld in App.vue, and then delete HelloWorld
+4. Create a new component called ToastNotification, use it in App.vue
+5. Create a new component called DeleteButton, use it in App.vue
+5.1. In DeleteButton, show a button to the user that says DELETE
+5.2. When this button is clicked, emit a global event called 
+"toast_notify"
+5.3. Pass along a message `Successfully deleted!`
+6. In ToastNotification, listen for the global event "toast_notify"
+7. When this occurs, show the user the message that comes with the event
+8. When the notification appears, give the user a button to "dismiss" the 
+notification
+8.1. When this is clicked, the notification just wont show
+9. Create a new component called PostButton, use it in App.vue
+9.1. In PostButton show a button to the user that says POST
+9.2. When this button is clicked, emit a global event "toast_notify"
+9.3. Pass along a message `Successfully Posted`
+10. Modify ToastNotification to now store and show multiple notifications
+10.1. Each notification will have a dismiss button the user can click 
+to dismiss that notification

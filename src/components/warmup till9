@@ -1,0 +1,53 @@
+<template>
+    <!-- we want the border to show when the msg pops up, not just stay there -->
+    <!-- if the msg is anything but null, then just just render this element and in this case is the css style  -->
+    <div v-if="msg">
+        <!--5. we want to show the message from method below -->
+        <h1>{{ msg }}</h1>
+        <!-- to clear msg -->
+        <button @click="clearMessage">Dismiss</button>
+    </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "ToastNotification",
+        // 6.define a varriable
+        data() {
+            return {
+                // null - no msg
+                msg: null,
+            };
+        },
+        methods: {
+            //4. receving the message
+            // a handler that does what we want it do -> we're receiving this msg
+            handleNotification(message) {
+                //   console.log(message);
+                //7. this.msg should equal to the message that we jjst recevied
+                this.msg = message;
+            },
+            //can either add an empty string or null
+            clearMessage() {
+                this.msg = "";
+            },
+        },
+        //   4.Listening for the event in mounted
+        mounted() {
+            // the event and then the call back (a function that passes the argument)
+            this.$root.$on(`toastNotify`, this.handleNotification);
+        },
+    };
+</script>
+
+<style scoped>
+    div {
+        border: dotted 2px black;
+        width: 20vw;
+        /* fixed because it'll always be there even if you scroll down or up */
+        position: fixed;
+        right: 5px;
+        top: 5px;
+    }
+</style>
